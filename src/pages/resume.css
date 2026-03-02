@@ -1,0 +1,61 @@
+.resume-page {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.resume-page h1,
+.resume-page h2,
+.resume-page h3,
+.resume-page h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.resume-page p,
+.resume-page ul {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body,
+  #root,
+  .ant-layout,
+  .ant-layout-content {
+    background: #fff !important;
+  }
+
+  .ant-layout-header {
+    display: none !important;
+  }
+
+  .resume-page {
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000;
+    padding: 12mm;
+  }
+
+  .resume-page .ant-row {
+    row-gap: 10mm !important;
+  }
+
+  .resume-page .ant-col {
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+
+  .resume-page h1,
+  .resume-page h2,
+  .resume-page h3,
+  .resume-page h4,
+  .resume-page p,
+  .resume-page ul {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}

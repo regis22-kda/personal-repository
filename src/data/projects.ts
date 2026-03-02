@@ -7,7 +7,7 @@ export const projects: Project[] = [
     description: 'A simple task tracking application.',
     category: 'app',
     technologies: ['React', 'TypeScript'],
-    image: '/images/project-1.png',
+    image: "/projects/app1.png",
   },
   {
     id: 'project-2',
@@ -15,7 +15,7 @@ export const projects: Project[] = [
     description: 'A responsive company profile website.',
     category: 'web',
     technologies: ['React', 'CSS'],
-    image: '/images/project-2.png',
+    image: "/projects/app1.png",
   },
   {
     id: 'project-3',
@@ -23,6 +23,6 @@ export const projects: Project[] = [
     description: 'A clean dashboard interface concept.',
     category: 'uiux',
     technologies: ['Figma', 'Design System'],
-    image: '/images/project-3.png',
+    image: "/projects/app1.png",
   },
 ]

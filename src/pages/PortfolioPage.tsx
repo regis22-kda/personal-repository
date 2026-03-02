@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import { Col, Row } from 'antd'
+import ProjectCard from '../components/projects/ProjectCard'
 import { getProjects } from '../services/projectService'
 import type { Project } from '../types/project'
 
@@ -47,12 +49,13 @@ function PortfolioPage() {
                     UI/UX
                 </button>
             </div>
-            {visibleProjects.map((project) => (
-                <div key={project.id}>
-                    <h2>{project.title}</h2>
-                    <p>{project.description}</p>
-                </div>
-            ))}
+            <Row gutter={[16, 16]}>
+                {visibleProjects.map((project) => (
+                    <Col key={project.id} xs={24} md={12} lg={8}>
+                        <ProjectCard project={project} />
+                    </Col>
+                ))}
+            </Row>
         </div>
     )
 }
