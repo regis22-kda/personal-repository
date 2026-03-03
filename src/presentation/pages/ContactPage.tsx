@@ -13,7 +13,7 @@ const requiredRule = (fieldName: string): Rule => ({ required: true, message: `$
 
 export default function ContactPage() {
   const [form] = Form.useForm<ContactFormInput>()
-  const { submit, status, submitting } = useContactForm()
+  const { submit, status, submitting, errorCode, errorMessage, requestId } = useContactForm()
   const { profile } = useResume()
 
   const handleSubmit = async (values: ContactFormInput) => {
@@ -36,12 +36,27 @@ export default function ContactPage() {
         <Reveal className="delay-1">
           <article className="split-contact">
             <div className="contact-form-side">
-              {status === 'success' ? <Alert message="Message sent successfully." type="success" showIcon style={{ marginBottom: 16 }} /> : null}
+              {status === 'success' ? (
+                <Alert
+                  message={requestId ? `Message sent successfully. Request ID: ${requestId}` : 'Message sent successfully.'}
+                  type="success"
+                  showIcon
+                  style={{ marginBottom: 16 }}
+                />
+              ) : null}
               {status === 'error' ? (
-                <Alert message="Could not send message. Please try again." type="error" showIcon style={{ marginBottom: 16 }} />
+                <Alert
+                  message={errorCode === 'rate_limited' ? 'Too many requests. Please wait and try again.' : errorMessage ?? 'Could not send message. Please try again.'}
+                  type="error"
+                  showIcon
+                  style={{ marginBottom: 16 }}
+                />
               ) : null}
 
               <Form<ContactFormInput> form={form} layout="vertical" onFinish={handleSubmit} autoComplete="off" requiredMark={false}>
+                <Form.Item<ContactFormInput> name="website" hidden>
+                  <Input tabIndex={-1} autoComplete="off" />
+                </Form.Item>
                 <div className="contact-input-grid">
                   <Form.Item<ContactFormInput> label="Full Name" name="fullName" rules={[requiredRule('Full Name')]}>
                     <Input size="large" placeholder="John Doe" />

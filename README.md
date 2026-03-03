@@ -32,6 +32,8 @@ A React + TypeScript portfolio application with a dark design, clean-architectur
 - IntersectionObserver-powered reveal animations
 - SEO metadata updates per route via local SEO component
 - Repository DI pattern to keep UI decoupled from data source implementations
+- Supabase-backed repositories (with optional mock fallback)
+- Supabase Edge Function endpoint for contact form submission
 
 ## Architecture
 
@@ -47,7 +49,9 @@ The project follows a clean-architecture style split:
   - `repositories/`: repository contracts/interfaces
 - `src/data/`
   - `mocks/`: mock source data
-  - `repositories/`: concrete mock repository implementations
+  - `mappers/`: Supabase row to domain entity mapping
+  - `repositories/`: mock + Supabase repository implementations
+  - `supabase/`: Supabase client and provider utilities
 - `src/usecases/`
   - UI-facing hooks (`useProjects`, `useResume`, `useContactForm`, `useInView`, etc.)
 - `src/presentation/`
@@ -61,8 +65,9 @@ The project follows a clean-architecture style split:
 
 1. Presentation pages consume usecase hooks only.
 2. Usecase hooks call repository interfaces through DI context.
-3. DI provider supplies mock repository implementations.
-4. Repositories resolve data from `src/data/mocks`.
+3. DI provider selects Supabase repositories by default when env vars are configured.
+4. If Supabase vars are missing, provider safely falls back to mock repositories.
+5. Contact submissions use the `contact-submit` Edge Function endpoint.
 
 This allows swapping mock repositories with API-backed repositories without changing page components.
 
@@ -78,6 +83,20 @@ This allows swapping mock repositories with API-backed repositories without chan
 ```bash
 npm install
 ```
+
+### Configure Environment
+
+Copy `.env.example` to `.env` and fill values:
+
+```bash
+cp .env.example .env
+```
+
+Required client variables:
+
+- `VITE_DATA_PROVIDER` (`supabase` or `mock`)
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY`
 
 ### Run Development Server
 
@@ -103,6 +122,18 @@ npm run preview
 npm run lint
 ```
 
+### Secret Scan
+
+```bash
+npm run secrets:scan
+```
+
+### Install Pre-commit Hook
+
+```bash
+npm run hooks:install
+```
+
 ## Assets
 
 - Portfolio and planning assets: `public/projects/*`
@@ -112,3 +143,22 @@ npm run lint
 
 - `react-helmet-async` is not currently wired; route metadata is updated through `src/presentation/components/SEO.tsx` using DOM meta updates.
 - Framer Motion is not used in runtime UI behavior; motion is CSS + IntersectionObserver.
+- Do not commit `.env` files or any real credentials.
+- CI includes secret scanning at `.github/workflows/secret-scan.yml`.
+
+## Supabase Endpoint and Security
+
+- Read data tables:
+  - `portfolio_projects`
+  - `portfolio_profile`
+  - `portfolio_social_links`
+  - `portfolio_experiences`
+  - `portfolio_skill_groups`
+- Contact endpoint:
+  - `POST /functions/v1/contact-submit`
+- Edge Function includes:
+  - payload validation
+  - honeypot (`website` field)
+  - IP hash based rate limiting
+
+Server-only secrets such as `SUPABASE_SERVICE_ROLE_KEY` must only be configured in Supabase function secrets and never in frontend code.

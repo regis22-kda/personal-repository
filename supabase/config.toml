@@ -1,0 +1,4 @@
+project_id = "personal-portfolio"
+
+[functions.contact-submit]
+verify_jwt = false

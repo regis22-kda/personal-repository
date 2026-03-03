@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "secrets:scan": "node scripts/verify-no-secrets.mjs",
+    "secrets:scan:staged": "node scripts/verify-no-secrets.mjs --staged",
+    "hooks:install": "git config core.hooksPath .githooks"
   },
   "dependencies": {
     "@ant-design/icons": "^6.1.0",

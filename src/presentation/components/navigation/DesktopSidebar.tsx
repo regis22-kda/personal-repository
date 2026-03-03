@@ -1,5 +1,4 @@
-import { LeftOutlined, MenuUnfoldOutlined, RightOutlined } from '@ant-design/icons'
-import { Button } from 'antd'
+import { LeftOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
 import { NAV_ITEMS } from '../../../core/constants/navigation'
 import { cn } from '../../../core/utils/cn'
