@@ -2,6 +2,7 @@ import { DownloadOutlined } from '@ant-design/icons'
 import { Button, Tag } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import { PAGE_METADATA } from '../../core/constants/metadata'
+import { getSkillTagColor } from '../../core/constants/skillColors'
 import { downloadFile } from '../../core/utils/downloadFile'
 import { useResume } from '../../usecases/useResume'
 import { SEO } from '../components/SEO'
@@ -34,6 +35,7 @@ const services = [
 export default function AboutPage() {
   const navigate = useNavigate()
   const { profile, skillGroups } = useResume()
+  const cvUrl = profile?.cvUrl || '/assets/regis-cv.txt'
 
   return (
     <>
@@ -64,7 +66,7 @@ export default function AboutPage() {
                 both serve real user outcomes.
               </p>
               <div className="button-row">
-                <Button type="primary" icon={<DownloadOutlined />} onClick={() => downloadFile('/assets/regis-cv.txt', 'regis-cv.txt')}>
+                <Button type="primary" icon={<DownloadOutlined />} onClick={() => downloadFile(cvUrl, 'regis-cv.txt')}>
                   Download CV
                 </Button>
                 <Button onClick={() => navigate('/portfolio')}>View Portfolio</Button>
@@ -95,9 +97,9 @@ export default function AboutPage() {
               {skillGroups.map((group) => (
                 <div key={group.groupName} style={{ marginBottom: 12 }}>
                   <strong>{group.groupName}</strong>
-                  <div style={{ marginTop: 8 }}>
+                  <div className="tag-wrap" style={{ marginTop: 10 }}>
                     {group.skills.map((skill) => (
-                      <Tag color="processing" key={`${group.groupName}-${skill}`}>
+                      <Tag color={getSkillTagColor(group.groupName)} key={`${group.groupName}-${skill}`}>
                         {skill}
                       </Tag>
                     ))}

@@ -20,7 +20,7 @@ export class SupabaseResumeRepository implements ResumeRepository {
 
   async getProfile() {
     const profileRows = await this.client.selectRows<ProfileRow>('portfolio_profile', {
-      select: 'id,name,title,email,phone,location,image,is_active',
+      select: 'id,name,title,email,phone,location,image,cv_url,is_available,is_active',
       is_active: 'eq.true',
       order: 'updated_at.desc',
       limit: '1',

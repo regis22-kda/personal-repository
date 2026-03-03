@@ -2,6 +2,7 @@ import { ClockCircleOutlined, DownloadOutlined, EnvironmentOutlined, MailOutline
 import { Button, Tag, Timeline } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import { PAGE_METADATA } from '../../core/constants/metadata'
+import { getSkillTagColor, getTechnologyTagColor } from '../../core/constants/skillColors'
 import { downloadFile } from '../../core/utils/downloadFile'
 import { useResume } from '../../usecases/useResume'
 import { SEO } from '../components/SEO'
@@ -10,6 +11,8 @@ import { Reveal } from '../components/motion/Reveal'
 export default function ResumePage() {
   const navigate = useNavigate()
   const { profile, experiences, skillGroups } = useResume()
+  const cvUrl = profile?.cvUrl || '/assets/regis-cv.txt'
+  const isAvailable = profile?.isAvailable ?? false
 
   return (
     <>
@@ -22,7 +25,7 @@ export default function ResumePage() {
               <img className="resume-photo" src={profile?.image ?? '/projects/app1.png'} alt={profile?.name ?? 'Profile'} />
 
               <div>
-                <h1 style={{ fontSize: 58 }}>{profile?.name ?? 'Rheganandar Bagas'}</h1>
+                <h1 style={{ fontSize: 58 }}>{profile?.name ?? 'John Doe'}</h1>
                 <p style={{ color: 'var(--accent)', fontSize: 36 }}>{profile?.title ?? 'Software Engineer'}</p>
 
                 <div className="chips" style={{ marginTop: 16 }}>
@@ -38,7 +41,7 @@ export default function ResumePage() {
                 </div>
 
                 <div className="button-row" style={{ marginTop: 16 }}>
-                  <Button type="primary" icon={<DownloadOutlined />} onClick={() => downloadFile('/assets/regis-cv.txt', 'regis-cv.txt')}>
+                  <Button type="primary" icon={<DownloadOutlined />} onClick={() => downloadFile(cvUrl, 'regis-cv.txt')}>
                     Download CV
                   </Button>
                   <Button onClick={() => navigate('/contact')}>Contact Me</Button>
@@ -61,9 +64,9 @@ export default function ResumePage() {
                     <div>
                       <h3 style={{ fontSize: 34 }}>{experience.title}</h3>
                       <p style={{ marginTop: 6 }}>{experience.description}</p>
-                      <div style={{ marginTop: 10 }}>
+                      <div className="tag-wrap" style={{ marginTop: 10 }}>
                         {experience.technologies.map((tech) => (
-                          <Tag color="processing" key={`${experience.title}-${tech}`}>
+                          <Tag color={getTechnologyTagColor(tech)} key={`${experience.title}-${tech}`}>
                             {tech}
                           </Tag>
                         ))}
@@ -80,9 +83,9 @@ export default function ResumePage() {
               {skillGroups.map((group) => (
                 <div key={group.groupName} style={{ marginBottom: 16 }}>
                   <h3 style={{ fontSize: 28 }}>{group.groupName}</h3>
-                  <div style={{ marginTop: 10 }}>
+                  <div className="tag-wrap" style={{ marginTop: 10 }}>
                     {group.skills.map((skill) => (
-                      <Tag key={`${group.groupName}-${skill}`} color="processing">
+                      <Tag key={`${group.groupName}-${skill}`} color={getSkillTagColor(group.groupName)}>
                         {skill}
                       </Tag>
                     ))}
@@ -96,7 +99,8 @@ export default function ResumePage() {
         <Reveal className="delay-2">
           <footer className="resume-footer-strip">
             <span>
-              <span className="dot" /> Available for projects
+              <span className={isAvailable ? 'dot' : 'dot dot-offline'} />{' '}
+              {isAvailable ? 'Available for projects' : 'Currently unavailable'}
             </span>
             <div className="social-inline">
               {profile?.socials.map((social) => (

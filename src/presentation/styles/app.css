@@ -186,6 +186,15 @@
   font-size: 14px;
 }
 
+.availability-toggle {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
 .dot {
   width: 8px;
   height: 8px;
@@ -193,6 +202,10 @@
   background: var(--success);
   display: inline-block;
   margin-right: 8px;
+}
+
+.dot-offline {
+  background: #6a7f96;
 }
 
 .app-stage {
@@ -326,6 +339,17 @@
   padding: 0 26px;
   font-size: 1.03rem;
   font-weight: 700;
+}
+
+.tag-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+}
+
+.tag-wrap .ant-tag {
+  margin-right: 0;
+  margin-bottom: 0;
 }
 
 .info-grid {

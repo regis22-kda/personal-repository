@@ -8,6 +8,8 @@ export interface ProfileRow {
   phone: string
   location: string
   image: string
+  cv_url: string | null
+  is_available: boolean | null
   is_active: boolean
 }
 
@@ -52,6 +54,8 @@ export function mapProfileRow(row: ProfileRow, socials: SocialLink[]): Profile {
     phone: row.phone,
     location: row.location,
     image: row.image,
+    cvUrl: row.cv_url ?? '',
+    isAvailable: row.is_available ?? true,
     socials,
   }
 }

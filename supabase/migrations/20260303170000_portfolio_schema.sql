@@ -141,11 +141,11 @@ revoke all on public.contact_submit_logs from anon, authenticated;
 insert into public.portfolio_profile (id, name, title, email, phone, location, image, is_active)
 values (
   '4f1e65b4-819e-4f35-ab2d-2f5f1275a1a0',
-  'Rheganandar Bagas',
+  'Portfolio Owner',
   'Software Engineer',
-  'rheganandar.bi@gmail.com',
-  '+62 895-1335-8568',
-  'Bandung, Indonesia',
+  'owner@example.com',
+  '+00 000-0000-0000',
+  'Remote',
   '/projects/app1.png',
   true
 )
@@ -162,8 +162,8 @@ set
 
 insert into public.portfolio_social_links (id, profile_id, name, url, sort_order)
 values
-  ('7e1cb247-df2f-46f9-a363-3adcf7db920a', '4f1e65b4-819e-4f35-ab2d-2f5f1275a1a0', 'GitHub', 'https://github.com/', 1),
-  ('ff16ea15-f813-4cc6-9531-476938ff2c89', '4f1e65b4-819e-4f35-ab2d-2f5f1275a1a0', 'LinkedIn', 'https://linkedin.com/in/', 2)
+  ('7e1cb247-df2f-46f9-a363-3adcf7db920a', '4f1e65b4-819e-4f35-ab2d-2f5f1275a1a0', 'GitHub', 'https://github.com/example', 1),
+  ('ff16ea15-f813-4cc6-9531-476938ff2c89', '4f1e65b4-819e-4f35-ab2d-2f5f1275a1a0', 'LinkedIn', 'https://linkedin.com/in/example', 2)
 on conflict (id) do update
 set
   profile_id = excluded.profile_id,
@@ -173,9 +173,9 @@ set
 
 insert into public.portfolio_projects (id, title, description, category, technologies, image, sort_order, is_published)
 values
-  ('ec16ff43-db87-4e36-b1f5-214317f89e93', 'Task Manager App', 'A simple task tracking application.', 'app', array['React', 'TypeScript'], '/projects/app1.png', 1, true),
-  ('1869b8ec-d5eb-4f80-8592-5966397dadf9', 'Company Website', 'A responsive company profile website.', 'web', array['React', 'CSS'], '/projects/app1.png', 2, true),
-  ('ce95c4eb-df79-4d84-a0f7-41c1fd88f2fc', 'Finance Dashboard UI', 'A clean dashboard interface concept.', 'uiux', array['Figma', 'Design System'], '/projects/app1.png', 3, true)
+  ('ec16ff43-db87-4e36-b1f5-214317f89e93', 'Sample Product App', 'Template project entry for initial setup.', 'app', array['React', 'TypeScript'], '/projects/app1.png', 1, true),
+  ('1869b8ec-d5eb-4f80-8592-5966397dadf9', 'Sample Company Website', 'Template web entry for initial setup.', 'web', array['React', 'CSS'], '/projects/app1.png', 2, true),
+  ('ce95c4eb-df79-4d84-a0f7-41c1fd88f2fc', 'Sample Dashboard UI', 'Template UI/UX entry for initial setup.', 'uiux', array['Figma', 'Design System'], '/projects/app1.png', 3, true)
 on conflict (id) do update
 set
   title = excluded.title,
@@ -189,8 +189,8 @@ set
 
 insert into public.portfolio_experiences (id, title, description, technologies, year, sort_order, is_published)
 values
-  ('74f4f467-6cb4-4868-9f9c-8db7080a3894', 'Task Manager App', 'Built a task tracking application with reusable components and typed services.', array['React', 'TypeScript', 'Ant Design'], '2025', 1, true),
-  ('188f604a-1cb5-40e5-8892-9fb9333713db', 'Company Website', 'Developed a responsive website for business profile and service showcase.', array['React', 'CSS', 'Vite'], '2024', 2, true)
+  ('74f4f467-6cb4-4868-9f9c-8db7080a3894', 'Senior Software Engineer', 'Sample experience entry for initial setup.', array['React', 'TypeScript', 'Ant Design'], '2025', 1, true),
+  ('188f604a-1cb5-40e5-8892-9fb9333713db', 'Software Engineer', 'Sample experience entry for initial setup.', array['React', 'CSS', 'Vite'], '2024', 2, true)
 on conflict (id) do update
 set
   title = excluded.title,

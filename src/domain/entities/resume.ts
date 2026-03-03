@@ -10,6 +10,8 @@ export interface Profile {
   phone: string
   location: string
   image: string
+  cvUrl: string
+  isAvailable: boolean
   socials: SocialLink[]
 }
 

@@ -14,6 +14,8 @@ function getExperienceYears(experienceCount: number): number {
 export default function HomePage() {
   const navigate = useNavigate()
   const { profile, experiences } = useResume()
+  const isAvailable = profile?.isAvailable ?? false
+  const cvUrl = profile?.cvUrl || '/assets/regis-cv.txt'
 
   const stats = [
     { label: 'Exp. Years', value: `${getExperienceYears(experiences.length).toString().padStart(2, '0')}+` },
@@ -30,8 +32,8 @@ export default function HomePage() {
             <div className="hero-media">
               <img src={profile?.image ?? '/projects/app1.png'} alt={profile?.name ?? 'Profile'} />
               <div className="hero-media-overlay">
-                <span className="cyber-label">Available</span>
-                <h3 style={{ marginTop: 10, fontSize: 38 }}>{profile?.name ?? 'Rheganandar Bagas'}</h3>
+                <span className="cyber-label">{isAvailable ? 'Available' : 'Unavailable'}</span>
+                <h3 style={{ marginTop: 10, fontSize: 38 }}>{profile?.name ?? 'John Doe'}</h3>
                 <p style={{ marginTop: 4, color: 'var(--text-secondary)' }}>{profile?.title ?? 'Software Engineer'}</p>
               </div>
             </div>
@@ -40,7 +42,7 @@ export default function HomePage() {
               <div>
                 <span className="cyber-label">Software Engineer</span>
                 <h1 style={{ marginTop: 16, fontSize: 'clamp(2.6rem, 4.5vw, 4.3rem)', lineHeight: 1.05 }}>
-                  Hello, I&apos;m <span style={{ color: 'var(--accent)' }}>{profile?.name ?? 'Rheganandar Bagas'}</span>
+                  Hello, I&apos;m <span style={{ color: 'var(--accent)' }}>{profile?.name ?? 'John Doe'}</span>
                 </h1>
                 <p className="hero-copy" style={{ marginTop: 18 }}>
                   {profile?.title ?? 'Software Engineer'} specializing in building immersive interfaces, reliable software
@@ -62,7 +64,7 @@ export default function HomePage() {
                   View My Work
                 </Button>
                 <Button
-                  onClick={() => downloadFile('/assets/regis-cv.txt', 'regis-cv.txt')}
+                  onClick={() => downloadFile(cvUrl, 'regis-cv.txt')}
                   icon={<DownloadOutlined />}
                   style={{ background: 'rgba(18,35,52,.85)' }}
                 >

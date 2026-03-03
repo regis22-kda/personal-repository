@@ -1,4 +1,5 @@
 import { LeftOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
+import { Switch } from 'antd'
 import { Link } from 'react-router-dom'
 import { NAV_ITEMS } from '../../../core/constants/navigation'
 import { cn } from '../../../core/utils/cn'
@@ -13,15 +14,12 @@ interface DesktopSidebarProps {
 }
 
 export function DesktopSidebar({ collapsed, activeRoute, profile, onToggle }: DesktopSidebarProps) {
+  const isAvailable = profile?.isAvailable ?? false
+
   return (
     <aside className={cn('app-sidebar', !collapsed && 'expanded')} aria-label="Main Navigation">
       <div className="sidebar-head">
         <div className="brand">
-          {/* <div className="brand-mark">D</div> */}
-          {/* <div className="brand-copy">
-            <strong>Rheganandar Bagas</strong>
-            <span>Software Engineer</span>
-          </div> */}
         </div>
         <button type="button" className="sidebar-toggle" onClick={onToggle} aria-label="Toggle sidebar">
           {collapsed ? <MenuUnfoldOutlined /> : <LeftOutlined />}
@@ -54,9 +52,10 @@ export function DesktopSidebar({ collapsed, activeRoute, profile, onToggle }: De
 
         <div className="availability-chip">
           <span className="cyber-label">Availability</span>
-          <p>
-            <span className="dot" />Open for new projects
-          </p>
+          <div className="availability-toggle">
+            <Switch checked={isAvailable} disabled />
+            <span>{isAvailable ? 'Open for new projects' : 'Currently unavailable'}</span>
+          </div>
         </div>
       </div>
     </aside>

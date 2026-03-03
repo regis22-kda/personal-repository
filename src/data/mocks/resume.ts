@@ -1,12 +1,14 @@
 import type { Experience, Profile, SkillGroup } from '../../domain/entities/resume'
 
 export const profileMock: Profile = {
-  name: 'Rheganandar Bagas',
+  name: 'John Doe',
   title: 'Software Engineer',
-  email: 'rheganandar.bi@gmail.com',
-  phone: '+62 895-1335-8568',
-  location: 'Bandung, Indonesia',
-  image: '/projects/app1.png',
+  email: 'mail@gmail.com',
+  phone: '+62 000-0000-0000',
+  location: 'Location, Country',
+  image: '/assets/profile.png',
+  cvUrl: '/assets/cv.txt',
+  isAvailable: true,
   socials: [
     { name: 'GitHub', url: 'https://github.com/' },
     { name: 'LinkedIn', url: 'https://linkedin.com/in/' },

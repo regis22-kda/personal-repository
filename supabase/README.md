@@ -17,6 +17,12 @@ Set these in Supabase secrets for Edge Functions:
 
 Never expose function secrets in frontend code or committed files.
 
+## Data Privacy in Migrations
+
+- Keep committed migrations free of personal/private portfolio content.
+- Use placeholder seed data in git.
+- Enter real profile, experience, and project content directly in Supabase (Dashboard SQL Editor or table editor).
+
 ## Deploy Steps
 
 1. Apply SQL migration from `supabase/migrations`.
