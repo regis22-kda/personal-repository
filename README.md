@@ -1,73 +1,114 @@
-# React + TypeScript + Vite
+# Personal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + TypeScript portfolio application with a dark design, clean-architecture layering, and route-based pages for Home, About, Resume, Portfolio, and Contact.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React 19
+- TypeScript (strict)
+- Vite
+- Ant Design
+- React Router
+- ESLint
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Hybrid left navigation sidebar:
+  - Collapsed icon rail by default on desktop
+  - Expandable full sidebar with profile and CTA
+  - Mobile bottom navigation
+- Full-page application shell with internal stage scrolling
+- Dark-only design tokens and global CSS variables
+- Route-based pages:
+  - `/` Home
+  - `/about`
+  - `/resume`
+  - `/portfolio`
+  - `/contact`
+  - `*` Not Found
+- Portfolio project filtering by category
+- Resume timeline + skills section
+- Contact form with TypeScript-typed validation and mock async submit
+- IntersectionObserver-powered reveal animations
+- SEO metadata updates per route via local SEO component
+- Repository DI pattern to keep UI decoupled from data source implementations
 
-## Expanding the ESLint configuration
+## Architecture
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+The project follows a clean-architecture style split:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- `src/core/`
+  - `constants/`: app metadata and navigation config
+  - `di/`: repository provider and context
+  - `theme/`: AntD theme config, global design tokens/styles
+  - `utils/`: shared helpers (`downloadFile`, class name merge)
+- `src/domain/`
+  - `entities/`: domain models (`Project`, `Profile`, `Experience`, etc.)
+  - `repositories/`: repository contracts/interfaces
+- `src/data/`
+  - `mocks/`: mock source data
+  - `repositories/`: concrete mock repository implementations
+- `src/usecases/`
+  - UI-facing hooks (`useProjects`, `useResume`, `useContactForm`, `useInView`, etc.)
+- `src/presentation/`
+  - `layout/`: `AppShell`
+  - `routes/`: route table
+  - `pages/`: Home, About, Resume, Portfolio, Contact, NotFound
+  - `components/`: navigation, motion, shared UI
+  - `styles/`: application-level styling
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Data Flow
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Presentation pages consume usecase hooks only.
+2. Usecase hooks call repository interfaces through DI context.
+3. DI provider supplies mock repository implementations.
+4. Repositories resolve data from `src/data/mocks`.
+
+This allows swapping mock repositories with API-backed repositories without changing page components.
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 20+
+- npm 10+
+
+### Install
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Run Development Server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+### Build
+
+```bash
+npm run build
+```
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+### Lint
+
+```bash
+npm run lint
+```
+
+## Assets
+
+- Portfolio and planning assets: `public/projects/*`
+- Downloadable CV placeholder used by CTA buttons: `public/assets/regis-cv.txt`
+
+## Notes
+
+- `react-helmet-async` is not currently wired; route metadata is updated through `src/presentation/components/SEO.tsx` using DOM meta updates.
+- Framer Motion is not used in runtime UI behavior; motion is CSS + IntersectionObserver.
