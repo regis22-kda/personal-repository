@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+  color-scheme: dark;
+  --bg: #041425;
+  --bg-soft: #071a2f;
+  --surface: #0a2236;
+  --panel: #0f1f31;
+  --panel-muted: #17293d;
+  --border: rgba(70, 137, 196, 0.24);
+  --border-strong: rgba(70, 137, 196, 0.45);
+  --text-primary: #e6eef8;
+  --text-secondary: #9ab0c9;
+  --text-muted: #6d87a5;
+  --accent: #1ea7f2;
+  --accent-strong: #2ebfff;
+  --success: #30c57e;
+  --shadow-soft: 0 18px 42px rgba(3, 12, 22, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  font-family: 'Manrope', 'Segoe UI', sans-serif;
+  color: var(--text-primary);
+  background:
+    radial-gradient(circle at 88% 8%, rgba(34, 140, 214, 0.23), transparent 36%),
+    radial-gradient(circle at 14% 88%, rgba(11, 60, 114, 0.42), transparent 30%),
+    linear-gradient(135deg, #021224 0%, #03172a 48%, #071e33 100%);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(75, 119, 171, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(75, 119, 171, 0.08) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.26;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
+}
