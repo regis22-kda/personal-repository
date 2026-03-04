@@ -11,6 +11,7 @@ export interface Profile {
   location: string
   image: string
   cvUrl: string
+  aboutVideoUrl: string
   isAvailable: boolean
   bioParagraph1: string
   bioParagraph2: string

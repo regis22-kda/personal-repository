@@ -36,6 +36,7 @@ export default function AboutPage() {
   const navigate = useNavigate()
   const { profile, skillGroups } = useResume()
   const cvUrl = profile?.cvUrl || '/assets/regis-cv.txt'
+  const aboutVideoUrl = profile?.aboutVideoUrl || '/assets/about-profile.mp4'
   const bioParagraph1 =
     profile?.bioParagraph1 ||
     'With practical product experience, I focus on turning complex requirements into clean interfaces and maintainable frontend architecture. My process balances technical precision with visual clarity.'
@@ -57,9 +58,18 @@ export default function AboutPage() {
         </Reveal>
 
         <Reveal className="delay-1">
-          <article className="hero-card" style={{ gridTemplateColumns: '1fr 1.35fr' }}>
-            <div className="hero-media" style={{ minHeight: 360 }}>
-              <img src={profile?.image ?? '/projects/app1.png'} alt={profile?.name ?? 'Profile'} />
+          <article className="hero-card hero-card-about" style={{ gridTemplateColumns: '1fr 1.35fr' }}>
+            <div className="hero-media hero-media-about" style={{ minHeight: 280 }}>
+              <video
+                className="hero-media-video"
+                src={aboutVideoUrl}
+                poster={profile?.image ?? '/assets/profile.png'}
+                autoPlay
+                muted
+                playsInline
+                preload="metadata"
+                aria-label={`${profile?.name ?? 'Profile'} introduction video`}
+              />
             </div>
             <div className="hero-body" style={{ gap: 18, padding: 34 }}>
               <h2 style={{ fontSize: 42 }}>Professional Bio</h2>

@@ -8,6 +8,7 @@ export const profileMock: Profile = {
   location: 'Location, Country',
   image: '/assets/profile.png',
   cvUrl: '/assets/cv.txt',
+  aboutVideoUrl: '/assets/about-profile.mp4',
   isAvailable: true,
   bioParagraph1:
     'With practical product experience, I focus on turning complex requirements into clean interfaces and maintainable frontend architecture.',
