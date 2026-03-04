@@ -5,7 +5,7 @@ export interface PageMetadata {
   description: string
 }
 
-export const APP_NAME = 'Regis Portfolio'
+export const APP_NAME = 'Rheganandar Portfolio'
 
 export const PAGE_METADATA: Record<RoutePath | 'not-found', PageMetadata> = {
   '/': {

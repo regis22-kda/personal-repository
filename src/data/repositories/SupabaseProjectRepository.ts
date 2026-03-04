@@ -11,7 +11,7 @@ export class SupabaseProjectRepository implements ProjectRepository {
 
   async getAll() {
     const rows = await this.client.selectRows<ProjectRow>('portfolio_projects', {
-      select: 'id,title,description,category,technologies,image,sort_order,is_published',
+      select: 'id,title,description,involvement,category,technologies,image,sort_order,is_published',
       is_published: 'eq.true',
       order: 'sort_order.asc',
     })

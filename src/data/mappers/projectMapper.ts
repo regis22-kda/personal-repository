@@ -4,6 +4,7 @@ export interface ProjectRow {
   id: string
   title: string
   description: string
+  involvement: string | null
   category: ProjectCategory
   technologies: string[] | null
   image: string
@@ -16,6 +17,7 @@ export function mapProjectRow(row: ProjectRow): Project {
     id: row.id,
     title: row.title,
     description: row.description,
+    involvement: row.involvement ?? 'N/A',
     category: row.category,
     technologies: row.technologies ?? [],
     image: row.image,

@@ -38,7 +38,7 @@ export default function PortfolioPage() {
       <section className="page-wrap">
         <Reveal>
           <div className="project-filter-row">
-            <PageIntro title="Portfolio" subtitle="Exploring the digital frontier with modern technology." />
+            <PageIntro title="Portfolio" subtitle="Learning, building, and exploring modern technology." />
             <Segmented
               options={items}
               value={selectedCategory}

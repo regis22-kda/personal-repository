@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { PAGE_METADATA } from '../../core/constants/metadata'
 import { downloadFile } from '../../core/utils/downloadFile'
 import { useResume } from '../../application/hooks/useResume'
+import { useProjects } from '../../application/hooks/useProjects'
 import { SEO } from '../components/SEO'
 import { Reveal } from '../components/motion/Reveal'
 
@@ -14,12 +15,13 @@ function getExperienceYears(experienceCount: number): number {
 export default function HomePage() {
   const navigate = useNavigate()
   const { profile, experiences } = useResume()
+  const { projects } = useProjects('all')
   const isAvailable = profile?.isAvailable ?? false
   const cvUrl = profile?.cvUrl || '/assets/regis-cv.txt'
 
   const stats = [
     { label: 'Exp. Years', value: `${getExperienceYears(experiences.length).toString().padStart(2, '0')}+` },
-    { label: 'Projects', value: '12' },
+    { label: 'Projects', value: String(projects.length) },
   ]
 
   return (
