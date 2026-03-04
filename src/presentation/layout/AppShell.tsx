@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom'
 import { DesktopSidebar } from '../components/navigation/DesktopSidebar'
 import { MobileBottomNav } from '../components/navigation/MobileBottomNav'
-import { useActiveRoute } from '../../usecases/useActiveRoute'
-import { useProfile } from '../../usecases/useProfile'
+import { useActiveRoute } from '../../presentation/hooks/useActiveRoute'
+import { useProfile } from '../../application/hooks/useProfile'
 import { useState } from 'react'
 
 export function AppShell() {

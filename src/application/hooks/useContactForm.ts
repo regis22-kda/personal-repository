@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react'
-import { useRepositories } from '../core/di/repositoryContext'
-import type { ContactFormInput, ContactSubmitErrorCode } from '../domain/entities/contact'
+import { useRepositories } from '../../core/di/repositoryContext'
+import type { ContactFormInput, ContactSubmitErrorCode } from '../../domain/entities/contact'
 
 export type ContactSubmitStatus = 'idle' | 'success' | 'error'
 

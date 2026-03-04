@@ -3,7 +3,7 @@ import { Button } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import { PAGE_METADATA } from '../../core/constants/metadata'
 import { downloadFile } from '../../core/utils/downloadFile'
-import { useResume } from '../../usecases/useResume'
+import { useResume } from '../../application/hooks/useResume'
 import { SEO } from '../components/SEO'
 import { Reveal } from '../components/motion/Reveal'
 

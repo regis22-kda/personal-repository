@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react'
 import { cn } from '../../../core/utils/cn'
-import { useInView } from '../../../usecases/useInView'
+import { useInView } from '../../../presentation/hooks/useInView'
 
 interface RevealProps {
   className?: string

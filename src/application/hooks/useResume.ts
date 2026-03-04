@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { useRepositories } from '../core/di/repositoryContext'
-import type { Experience, Profile, SkillGroup } from '../domain/entities/resume'
+import { useRepositories } from '../../core/di/repositoryContext'
+import type { Experience, Profile, SkillGroup } from '../../domain/entities/resume'
 
 interface ResumeState {
   profile: Profile | null

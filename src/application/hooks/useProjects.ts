@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
-import { useRepositories } from '../core/di/repositoryContext'
-import type { Project, ProjectCategory } from '../domain/entities/project'
+import { useRepositories } from '../../core/di/repositoryContext'
+import type { Project, ProjectCategory } from '../../domain/entities/project'
 
 export type ProjectFilter = 'all' | ProjectCategory
 

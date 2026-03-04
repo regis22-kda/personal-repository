@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { useRepositories } from '../core/di/repositoryContext'
-import type { Profile } from '../domain/entities/resume'
+import { useRepositories } from '../../core/di/repositoryContext'
+import type { Profile } from '../../domain/entities/resume'
 
 export function useProfile() {
   const { resumeRepository } = useRepositories()

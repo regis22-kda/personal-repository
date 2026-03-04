@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { useLocation } from 'react-router-dom'
-import type { RoutePath } from '../domain/entities/navigation'
+import type { RoutePath } from '../../domain/entities/navigation'
 
 const ROUTES: RoutePath[] = ['/', '/about', '/resume', '/portfolio', '/contact']
 
