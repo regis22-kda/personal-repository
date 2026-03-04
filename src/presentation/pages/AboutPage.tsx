@@ -36,6 +36,12 @@ export default function AboutPage() {
   const navigate = useNavigate()
   const { profile, skillGroups } = useResume()
   const cvUrl = profile?.cvUrl || '/assets/regis-cv.txt'
+  const bioParagraph1 =
+    profile?.bioParagraph1 ||
+    'With practical product experience, I focus on turning complex requirements into clean interfaces and maintainable frontend architecture. My process balances technical precision with visual clarity.'
+  const bioParagraph2 =
+    profile?.bioParagraph2 ||
+    'I work best at the intersection of system thinking and storytelling, where design and engineering should both serve real user outcomes.'
 
   return (
     <>
@@ -45,7 +51,7 @@ export default function AboutPage() {
         <Reveal>
           <PageIntro
             title="About Me"
-            subtitle="Blending code and design in the digital frontier."
+            subtitle="Building thoughtful digital experiences through code and design."
             badge="Professional Bio"
           />
         </Reveal>
@@ -57,14 +63,8 @@ export default function AboutPage() {
             </div>
             <div className="hero-body" style={{ gap: 18, padding: 34 }}>
               <h2 style={{ fontSize: 42 }}>Professional Bio</h2>
-              <p className="hero-copy" style={{ margin: 0 }}>
-                With practical product experience, I focus on turning complex requirements into clean interfaces and
-                maintainable frontend architecture. My process balances technical precision with visual clarity.
-              </p>
-              <p className="hero-copy" style={{ margin: 0 }}>
-                I work best at the intersection of system thinking and storytelling, where design and engineering should
-                both serve real user outcomes.
-              </p>
+              <p className="hero-copy" style={{ margin: 0 }}>{bioParagraph1}</p>
+              <p className="hero-copy" style={{ margin: 0 }}>{bioParagraph2}</p>
               <div className="button-row">
                 <Button type="primary" icon={<DownloadOutlined />} onClick={() => downloadFile(cvUrl, 'regis-cv.txt')}>
                   Download CV

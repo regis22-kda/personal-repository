@@ -12,6 +12,8 @@ export interface Profile {
   image: string
   cvUrl: string
   isAvailable: boolean
+  bioParagraph1: string
+  bioParagraph2: string
   socials: SocialLink[]
 }
 

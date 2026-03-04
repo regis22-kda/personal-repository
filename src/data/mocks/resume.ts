@@ -9,6 +9,10 @@ export const profileMock: Profile = {
   image: '/assets/profile.png',
   cvUrl: '/assets/cv.txt',
   isAvailable: true,
+  bioParagraph1:
+    'With practical product experience, I focus on turning complex requirements into clean interfaces and maintainable frontend architecture.',
+  bioParagraph2:
+    'I work at the intersection of system thinking and storytelling, where design and engineering should both serve real user outcomes.',
   socials: [
     { name: 'GitHub', url: 'https://github.com/' },
     { name: 'LinkedIn', url: 'https://linkedin.com/in/' },

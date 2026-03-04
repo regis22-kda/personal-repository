@@ -10,6 +10,8 @@ export interface ProfileRow {
   image: string
   cv_url: string | null
   is_available: boolean | null
+  bio_paragraph_1: string | null
+  bio_paragraph_2: string | null
   is_active: boolean
 }
 
@@ -56,6 +58,8 @@ export function mapProfileRow(row: ProfileRow, socials: SocialLink[]): Profile {
     image: row.image,
     cvUrl: row.cv_url ?? '',
     isAvailable: row.is_available ?? true,
+    bioParagraph1: row.bio_paragraph_1 ?? '',
+    bioParagraph2: row.bio_paragraph_2 ?? '',
     socials,
   }
 }
