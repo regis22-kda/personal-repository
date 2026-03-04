@@ -7,6 +7,7 @@ export const profileMock: Profile = {
   phone: '+62 000-0000-0000',
   location: 'Location, Country',
   image: '/assets/profile.png',
+  realProfileImageUrl: '/assets/profile.png',
   cvUrl: '/assets/cv.txt',
   aboutVideoUrl: '/assets/about-profile.mp4',
   isAvailable: true,

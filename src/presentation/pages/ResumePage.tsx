@@ -22,7 +22,15 @@ export default function ResumePage() {
         <Reveal>
           <article className="resume-hero">
             <div className="resume-top">
-              <img className="resume-photo" src={profile?.image ?? '/projects/app1.png'} alt={profile?.name ?? 'Profile'} />
+              <a
+                href={profile?.realProfileImageUrl ?? profile?.image ?? '/projects/app1.png'}
+                target="_blank"
+                rel="noreferrer"
+                className="profile-image-link profile-image-link-block"
+                aria-label="Open full profile image"
+              >
+                <img className="resume-photo" src={profile?.image ?? '/projects/app1.png'} alt={profile?.name ?? 'Profile'} />
+              </a>
 
               <div>
                 <h1 style={{ fontSize: 58 }}>{profile?.name ?? 'John Doe'}</h1>

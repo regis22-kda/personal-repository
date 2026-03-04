@@ -10,6 +10,7 @@ export interface Profile {
   phone: string
   location: string
   image: string
+  realProfileImageUrl: string
   cvUrl: string
   aboutVideoUrl: string
   isAvailable: boolean

@@ -30,7 +30,15 @@ export default function HomePage() {
         <Reveal>
           <article className="hero-card">
             <div className="hero-media">
-              <img src={profile?.image ?? '/projects/app1.png'} alt={profile?.name ?? 'Profile'} />
+              <a
+                href={profile?.realProfileImageUrl ?? profile?.image ?? '/projects/app1.png'}
+                target="_blank"
+                rel="noreferrer"
+                className="profile-image-link profile-image-link-block"
+                aria-label="Open full profile image"
+              >
+                <img src={profile?.image ?? '/projects/app1.png'} alt={profile?.name ?? 'Profile'} />
+              </a>
               <div className="hero-media-overlay">
                 <span className="cyber-label">{isAvailable ? 'Available' : 'Unavailable'}</span>
                 <h3 style={{ marginTop: 10, fontSize: 38 }}>{profile?.name ?? 'John Doe'}</h3>

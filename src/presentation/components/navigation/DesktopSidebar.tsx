@@ -27,7 +27,15 @@ export function DesktopSidebar({ collapsed, activeRoute, profile, onToggle }: De
       </div>
 
       <div className="sidebar-profile">
-        <img src={profile?.image ?? '/projects/app1.png'} alt={profile?.name ?? 'Profile'} />
+        <a
+          href={profile?.realProfileImageUrl ?? profile?.image ?? '/projects/app1.png'}
+          target="_blank"
+          rel="noreferrer"
+          className="profile-image-link"
+          aria-label="Open full profile image"
+        >
+          <img src={profile?.image ?? '/projects/app1.png'} alt={profile?.name ?? 'Profile'} />
+        </a>
         <div>
           <strong>{profile?.name ?? 'Profile'}</strong>
           <span>{profile?.title ?? 'Professional'}</span>
