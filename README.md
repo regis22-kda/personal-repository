@@ -33,6 +33,8 @@ A React + TypeScript portfolio application with a dark design, clean-architectur
 - SEO metadata updates per route via local SEO component
 - Repository DI pattern to keep UI decoupled from data source implementations
 - Supabase-backed repositories (with optional mock fallback)
+- Dynamic Home page stats (Experience years, Project count)
+- Project detail support for "Involvement" (the role/context of the contribution)
 - Supabase Edge Function endpoint for contact form submission
 
 ## Architecture
@@ -52,14 +54,15 @@ The project follows a clean-architecture style split:
   - `mappers/`: Supabase row to domain entity mapping
   - `repositories/`: mock + Supabase repository implementations
   - `supabase/`: Supabase client and provider utilities
-- `src/usecases/`
-  - UI-facing hooks (`useProjects`, `useResume`, `useContactForm`, `useInView`, etc.)
+- `src/application/`
+  - `hooks/`: UI-facing domain hooks (`useProjects`, `useResume`, `useProfile`, `useContactForm`)
 - `src/presentation/`
   - `layout/`: `AppShell`
   - `routes/`: route table
   - `pages/`: Home, About, Resume, Portfolio, Contact, NotFound
   - `components/`: navigation, motion, shared UI
-  - `styles/`: application-level styling
+  - `hooks/`: presentation-specific hooks (`useActiveRoute`, `useInView`)
+  - `styles/`: application-level CSS
 
 ## Data Flow
 
@@ -149,7 +152,7 @@ npm run hooks:install
 ## Supabase Endpoint and Security
 
 - Read data tables:
-  - `portfolio_projects`
+  - `portfolio_projects`: includes `id`, `title`, `description`, `involvement`, `category`, `technologies`, `image`, etc.
   - `portfolio_profile`
   - `portfolio_social_links`
   - `portfolio_experiences`
