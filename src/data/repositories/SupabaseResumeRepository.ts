@@ -42,7 +42,7 @@ export class SupabaseResumeRepository implements ResumeRepository {
 
   async getExperiences() {
     const rows = await this.client.selectRows<ExperienceRow>('portfolio_experiences', {
-      select: 'id,title,description,technologies,year,sort_order,is_published',
+      select: 'id,title,subtitle,description,technologies,year,sort_order,is_published',
       is_published: 'eq.true',
       order: 'sort_order.asc',
     })

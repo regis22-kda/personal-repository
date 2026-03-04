@@ -21,6 +21,7 @@ export interface Profile {
 
 export interface Experience {
   title: string
+  subtitle: string
   description: string
   technologies: string[]
   year: string

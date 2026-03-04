@@ -23,13 +23,15 @@ export const profileMock: Profile = {
 
 export const experienceMocks: Experience[] = [
   {
-    title: 'Task Manager App',
+    title: 'PT Bank Jago Tbk (Project-Based), Bandung (Remote)',
+    subtitle: 'Software Engineer',
     description: 'Built a task tracking application with reusable components and typed services.',
     technologies: ['React', 'TypeScript', 'Ant Design'],
     year: '2025',
   },
   {
-    title: 'Company Website',
+    title: 'PT. Smooets Teknologi Outsourcing, Bandung',
+    subtitle: 'Software Engineer',
     description: 'Developed a responsive website for business profile and service showcase.',
     technologies: ['React', 'CSS', 'Vite'],
     year: '2024',

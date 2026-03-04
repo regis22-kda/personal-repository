@@ -553,6 +553,19 @@
   gap: 18px;
 }
 
+.resume-experience-timeline {
+  margin-left: -10px;
+  padding-left: 2px;
+}
+
+.resume-experience-timeline .ant-timeline-item-content {
+  inset-inline-start: 132px !important;
+}
+
+.resume-experience-timeline .ant-timeline-item-label {
+  width: 102px !important;
+}
+
 .resume-footer-strip {
   border: 1px solid var(--border);
   border-radius: 14px;

@@ -28,6 +28,7 @@ export interface SocialLinkRow {
 export interface ExperienceRow {
   id: string
   title: string
+  subtitle: string | null
   description: string
   technologies: string[] | null
   year: string
@@ -71,6 +72,7 @@ export function mapProfileRow(row: ProfileRow, socials: SocialLink[]): Profile {
 export function mapExperienceRow(row: ExperienceRow): Experience {
   return {
     title: row.title,
+    subtitle: row.subtitle ?? '',
     description: row.description,
     technologies: row.technologies ?? [],
     year: row.year,

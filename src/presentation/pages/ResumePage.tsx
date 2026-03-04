@@ -67,10 +67,14 @@ export default function ResumePage() {
               </h2>
 
               <Timeline
+                className="resume-experience-timeline"
                 items={experiences.map((experience) => ({
                   children: (
                     <div>
-                      <h3 style={{ fontSize: 34 }}>{experience.title}</h3>
+                      <h3 style={{ fontSize: 26 }}>{experience.title}</h3>
+                      <h4 style={{ marginTop: 6, color: 'var(--text-primary)', fontSize: 20 }}>
+                        {experience.subtitle || 'Software Engineer'}
+                      </h4>
                       <p style={{ marginTop: 6 }}>{experience.description}</p>
                       <div className="tag-wrap" style={{ marginTop: 10 }}>
                         {experience.technologies.map((tech) => (
