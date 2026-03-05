@@ -34,6 +34,6 @@ export const PAGE_METADATA: Record<RoutePath | 'not-found', PageMetadata> = {
   },
 }
 
-export function buildTitle(pageTitle: string): string {
-  return `${pageTitle} | ${APP_NAME}`
+export function buildTitle(pageTitle: string, appName = APP_NAME): string {
+  return `${pageTitle} | ${appName}`
 }

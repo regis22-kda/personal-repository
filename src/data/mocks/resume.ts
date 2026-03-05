@@ -2,6 +2,7 @@ import type { Experience, Profile, SkillGroup } from '../../domain/entities/resu
 
 export const profileMock: Profile = {
   name: 'John Doe',
+  siteTitle: 'John Doe Portfolio',
   title: 'Software Engineer',
   email: 'mail@gmail.com',
   phone: '+62 000-0000-0000',
@@ -15,9 +16,10 @@ export const profileMock: Profile = {
     'With practical product experience, I focus on turning complex requirements into clean interfaces and maintainable frontend architecture.',
   bioParagraph2:
     'I work at the intersection of system thinking and storytelling, where design and engineering should both serve real user outcomes.',
+  faviconUrl: '/vite.svg',
   socials: [
-    { name: 'GitHub', url: 'https://github.com/' },
-    { name: 'LinkedIn', url: 'https://linkedin.com/in/' },
+    { name: 'GitHub', url: 'https://github.com/', iconUrl: '/assets/social-github.svg' },
+    { name: 'LinkedIn', url: 'https://linkedin.com/in/', iconUrl: '/assets/social-linkedin.svg' },
   ],
 }
 

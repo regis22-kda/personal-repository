@@ -116,8 +116,12 @@ export default function ResumePage() {
             </span>
             <div className="social-inline">
               {profile?.socials.map((social) => (
-                <a key={social.name} href={social.url} target="_blank" rel="noreferrer">
-                  {social.name}
+                <a key={social.name} href={social.url} target="_blank" rel="noreferrer" className="social-link-icon">
+                  {social.iconUrl ? (
+                    <img src={social.iconUrl} alt={social.name} loading="lazy" />
+                  ) : (
+                    <span>{social.name}</span>
+                  )}
                 </a>
               ))}
             </div>

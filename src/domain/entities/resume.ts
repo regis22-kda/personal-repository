@@ -1,10 +1,12 @@
 export interface SocialLink {
   name: string
   url: string
+  iconUrl: string
 }
 
 export interface Profile {
   name: string
+  siteTitle: string
   title: string
   email: string
   phone: string
@@ -16,6 +18,7 @@ export interface Profile {
   isAvailable: boolean
   bioParagraph1: string
   bioParagraph2: string
+  faviconUrl: string
   socials: SocialLink[]
 }
 

@@ -591,6 +591,23 @@
   color: var(--text-secondary);
 }
 
+.social-link-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(18, 35, 53, 0.72);
+}
+
+.social-link-icon img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(20px);

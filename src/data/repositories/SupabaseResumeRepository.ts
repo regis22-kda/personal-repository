@@ -20,7 +20,7 @@ export class SupabaseResumeRepository implements ResumeRepository {
 
   async getProfile() {
     const profileRows = await this.client.selectRows<ProfileRow>('portfolio_profile', {
-      select: 'id,name,title,email,phone,location,image,real_profile_image_url,cv_url,about_video_url,is_available,bio_paragraph_1,bio_paragraph_2,is_active',
+      select: 'id,name,site_title,title,email,phone,location,image,real_profile_image_url,cv_url,about_video_url,is_available,bio_paragraph_1,bio_paragraph_2,favicon_url,is_active',
       is_active: 'eq.true',
       order: 'updated_at.desc',
       limit: '1',
@@ -32,7 +32,7 @@ export class SupabaseResumeRepository implements ResumeRepository {
     }
 
     const socialRows = await this.client.selectRows<SocialLinkRow>('portfolio_social_links', {
-      select: 'id,profile_id,name,url,sort_order',
+      select: 'id,profile_id,name,url,icon_url,sort_order',
       profile_id: `eq.${profile.id}`,
       order: 'sort_order.asc',
     })
